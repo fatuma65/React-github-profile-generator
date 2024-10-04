@@ -7,7 +7,7 @@ const Form = () => {
   };
   return (
     <>
-      <div className="h-screen home flex flex-col justify-center items-center ">
+      <div className="mt-24 home flex flex-col justify-center items-center ">
         <i className="bx bxl-github text-9xl m-2 text-[#78B7D0]"></i>
         <h1 className="text-3xl font-bold text-white p-2">
           Find Your Github Profile
