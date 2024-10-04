@@ -1,0 +1,21 @@
+@media screen and (min-width: 200px) and (max-width: 1024px) {
+  nav ul {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+    background-color: #000;
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    left: 0;
+    padding: 20px;
+    border-top: 1px solid #fff;
+  }
+  .bx-menu {
+    display: block;
+  }
+  nav ul.block {
+    display: flex;
+  }
+}

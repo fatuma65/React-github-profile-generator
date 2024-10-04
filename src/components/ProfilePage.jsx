@@ -13,7 +13,7 @@ const UserProfile = () => {
   };
   return (
     <>
-      <div className="flex flex-col items-center profile h-screen justify-center">
+      <div className="flex flex-col items-center profile justify-center">
         {loading && (
           <h1 className="text-white text-2xl text-center">Loading....</h1>
         )}
@@ -22,18 +22,20 @@ const UserProfile = () => {
           alt=""
           className="w-64 rounded-2xl p-4"
         />
-        <h1 className="p-4 text-white text-5xl font-bold">{profile?.name}</h1>
+        <h1 className="p-4 text-white text-center text-nowrap lg:text-wrap text-5xl font-bold">
+          {profile?.name}
+        </h1>
         <h3
           className="text-[#6A9AB0] text-3xl cursor-pointer"
           onClick={redirectUser}>
           @{profile?.login}
         </h3>
-        <div className="flex m-2 gap-4">
+        <div className="lg:flex m-2 gap-4">
           <div className="flex items-center text-white p-2">
             <i className="bx bxs-location-plus m-2 text-2xl"></i>
             <h4 className="text-xl">{profile?.location}</h4>
           </div>
-          <div className="flex items-center text-white ">
+          <div className="flex p-2 items-center text-white ">
             <i className="bx bxs-calendar m-2 text-2xl"></i>
             <h4 className="text-xl">{changeDateFormat(profile?.created_at)}</h4>
           </div>
