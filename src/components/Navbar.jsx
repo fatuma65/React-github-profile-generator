@@ -1,16 +1,36 @@
 import { Link } from "react-router-dom";
 import "./NavbarStyles.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Navbar = () => {
   const [menuItems, setMenuItems] = useState(false);
+  const [scrolling, setScrolling] = useState(false);
 
   const handleClick = () => {
     setMenuItems(!menuItems);
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <div className="w-full text-white flex justify-between lg:justify-around items-center h-[80px] border-b header ">
+      <div
+        className={`w-full text-white flex justify-between lg:justify-around items-center h-[80px] border-b header ${
+          scrolling ? "scroll" : ""
+        }`}>
         <h1 className="text-4xl font-bold">
           Git<span className="text-[#38BDF8]">Hub</span>
         </h1>

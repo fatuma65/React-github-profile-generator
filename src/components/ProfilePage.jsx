@@ -13,7 +13,7 @@ const UserProfile = () => {
   };
   return (
     <>
-      <div className="flex flex-col items-center profile justify-center">
+      <div className="flex flex-col items-center profile justify-center mt-24 ">
         {loading && (
           <h1 className="text-white text-2xl text-center">Loading....</h1>
         )}

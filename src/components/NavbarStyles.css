@@ -1,3 +1,12 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+.scroll {
+  background-color: #000;
+}
 @media screen and (min-width: 200px) and (max-width: 1024px) {
   nav ul {
     display: none;

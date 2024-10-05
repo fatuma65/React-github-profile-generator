@@ -2,7 +2,7 @@ import image from "../assets/roman-synkevych-wX2L8L-fGeA-unsplash.jpg";
 const HomePage = () => {
   return (
     <>
-      <div className="lg:flex justify-center items-center mt-16">
+      <div className="lg:flex justify-center items-center mt-28">
         <div className="text-white lg:w-1/2 lg:p-24">
           <h1 className="text-4xl font-bold p-2">Github Profile Data Finder</h1>
           <h3 className="p-2">
