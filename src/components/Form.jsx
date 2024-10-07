@@ -1,15 +1,23 @@
 import { useFetch } from "../context/ProfileContext";
+import { useTheme } from "../context/ThemeContext";
 import "./FormStyles.css";
 const Form = () => {
   const { handleSubmit, user, setUser } = useFetch();
+  const { theme } = useTheme();
   const handleChange = (e) => {
     setUser(e.target.value);
   };
   return (
     <>
       <div className="mt-24 home flex flex-col justify-center items-center ">
-        <i className="bx bxl-github text-9xl m-2 text-[#78B7D0]"></i>
-        <h1 className="text-3xl font-bold text-white p-2">
+        <i
+          className={`bx bxl-github text-9xl m-2  ${
+            theme === "dark" ? "text-[#78B7D0]" : "text-[#38BDF8]"
+          } `}></i>
+        <h1
+          className={`text-3xl font-bold ${
+            theme === "dark" ? "text-white" : ""
+          }  p-2`}>
           Find Your Github Profile
         </h1>
         <form action="" className="flex flex-col w-96">
@@ -20,7 +28,11 @@ const Form = () => {
             value={user}
             onChange={handleChange}
             required
-            className="p-6 m-2 rounded border-none outline-none "
+            className={`p-6 m-2 rounded ${
+              theme === "dark"
+                ? "border-none outline-none"
+                : "border-2 border-black"
+            }  `}
           />
           <button
             onClick={handleSubmit}

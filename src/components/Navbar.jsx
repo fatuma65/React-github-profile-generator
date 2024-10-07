@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import "./NavbarStyles.css";
 import { useEffect, useState } from "react";
+import { useTheme } from "../context/ThemeContext";
 const Navbar = () => {
   const [menuItems, setMenuItems] = useState(false);
   const [scrolling, setScrolling] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const handleClick = () => {
     setMenuItems(!menuItems);
@@ -25,10 +27,16 @@ const Navbar = () => {
     };
   }, []);
 
+  const toogleTheme = () => {
+    theme === "light" ? setTheme("dark") : setTheme("light");
+  };
+
+  useEffect(() => {}, [theme]);
+
   return (
     <>
       <div
-        className={`w-full text-white flex justify-between lg:justify-around items-center h-[80px] border-b header ${
+        className={`w-full flex justify-between lg:justify-around items-center h-[80px] border-b header ${
           scrolling ? "scroll" : ""
         }`}>
         <h1 className="text-4xl font-bold">
@@ -36,9 +44,9 @@ const Navbar = () => {
         </h1>
         <nav>
           <ul
-            className={`flex gap-4 lg:flex cursor-pointer text-xl ${
+            className={`flex gap-4 lg:flex cursor-pointer text-xl  ${
               menuItems ? "block" : "hidden"
-            }`}>
+            } `}>
             <li>
               <Link to={"/"}>Home</Link>
             </li>
@@ -50,9 +58,36 @@ const Navbar = () => {
             </li>
           </ul>
         </nav>
-        <i
-          className="bx bx-menu cursor-pointer text-4xl lg:hidden"
-          onClick={handleClick}></i>
+        <div className="flex gap-4 items-center lg:hidden icons ">
+          <i
+            className="bx bx-menu cursor-pointer text-4xl lg:hidden"
+            onClick={handleClick}></i>
+          {theme === "light" ? (
+            <i
+              className="bx bxs-moon text-3xl lg:hidden"
+              onClick={toogleTheme}></i>
+          ) : (
+            <i
+              className="bx bxs-sun text-3xl lg:hidden"
+              onClick={toogleTheme}></i>
+          )}
+        </div>
+
+        <div className=" flex dark-buttons">
+          {theme === "light" ? (
+            <button
+              className="flex items-center bg-[#38BDF8] w-36 justify-center "
+              onClick={toogleTheme}>
+              <i className="bx bxs-sun text-3xl"></i>Light
+            </button>
+          ) : (
+            <button
+              className="flex items-center bg-[#38BDF8] text-white w-36 text-center justify-center"
+              onClick={toogleTheme}>
+              <i className="bx bxs-moon text-3xl"></i>Dark
+            </button>
+          )}
+        </div>
       </div>
     </>
   );

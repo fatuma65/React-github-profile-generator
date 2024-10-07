@@ -15,12 +15,15 @@ const Footer = () => {
     alert(
       `Welcome ${user}, You have successfully subscribed to our newsletter`
     );
-    setInputText('')
+    setInputText("");
   };
 
   const redirectSocial = () => {
-    window.open('https://www.linkedin.com/in/namale-fatuma-5b56452a7', '_black')
-  }
+    window.open(
+      "https://www.linkedin.com/in/namale-fatuma-5b56452a7",
+      "_black"
+    );
+  };
   return (
     <>
       <div className="bg-[#000] mt-16">
@@ -61,7 +64,9 @@ const Footer = () => {
               Submit
             </button>
             <div className="text-4xl p-2 cursor-pointer">
-              <i className="bx bxl-linkedin-square" onClick={redirectSocial}></i>
+              <i
+                className="bx bxl-linkedin-square"
+                onClick={redirectSocial}></i>
               <i className="bx bxl-facebook-circle"></i>
               <i className="bx bxl-medium"></i>
             </div>
@@ -70,7 +75,9 @@ const Footer = () => {
         <hr className="w-4/5 mx-auto" />
         <div className="text-white flex flex-col justify-center items-center p-6">
           <h3>Made with love by Namale Fatuma</h3>
-          <p>&#169; Github Profile Generator All rights reserved.</p>
+          <p className="text-center">
+            &#169; Github Profile Generator All rights reserved.
+          </p>
         </div>
       </div>
     </>
