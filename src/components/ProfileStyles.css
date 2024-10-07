@@ -1,6 +1,10 @@
 .profile img {
     border-radius: 50%;
 }
-.profile {
-    background-color: #001F3F;
+.text {
+    font-size: 18px;
+    letter-spacing: .1rem;
+}
+.repository {
+    box-shadow: 0 0 10px 0 rgba(0,0, 0, 0.1);
 }

@@ -3,7 +3,7 @@ const HomePage = () => {
   return (
     <>
       <div className="lg:flex justify-center items-center mt-28">
-        <div className="text-white lg:w-1/2 lg:p-24">
+        <div className=" lg:w-1/2 lg:p-24">
           <h1 className="text-4xl font-bold p-2">Github Profile Data Finder</h1>
           <h3 className="p-2">
             The application allows you to quickly retrieve basic GitHub profile

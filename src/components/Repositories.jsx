@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { useFetch } from "../context/ProfileContext";
-
+import { useTheme } from "../context/ThemeContext";
+import "./ProfileStyles.css";
 const Repositories = () => {
   const [repositories, setRepositories] = useState([]);
   const { loading, setLoading, user } = useFetch();
+  const { theme } = useTheme();
   const perRepo = 8;
 
   const fetchRepositories = async () => {
@@ -29,17 +31,20 @@ const Repositories = () => {
 
   return (
     <>
-      <h1 className="lg:p-4 mt-4 p-2 text-white text-3xl font-bold lg:text-left text-center lg:ml-28">
+      <h1
+        className={`lg:p-4 mt-4 p-2 ${
+          theme === "dark" ? "text-white" : ""
+        } text-3xl font-bold lg:text-left text-center lg:ml-28`}>
         Top Repositories
       </h1>
       <hr className="border-4 w-52 lg:ml-32 border-[#EAD8B1] mx-auto" />
-      <div className=" grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 mx-auto m-8 lg:w-5/6">
+      <div className=" grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 mx-auto mt-8 lg:w-11/12">
         {loading && <p>Loading....</p>}
         {displayFewRepositories !== null &&
           displayFewRepositories.map((repository) => (
             <div
               key={repository.id}
-              className="p-4 h-82 bg-[#fff] text-black shadow-2xl rounded w-82 flex flex-col justify-between">
+              className="p-4 h-82 bg-[#fff] text-black repository rounded w-82 flex flex-col justify-between">
               <h1
                 className=" text-2xl font-bold p-2 cursor-pointer"
                 onClick={() => handleRedirectToRepo(repository.name)}>
