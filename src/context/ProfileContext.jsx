@@ -9,18 +9,11 @@ export const ProfileProvider = ({ children }) => {
   const userInLocalStorage = localStorage.getItem("user");
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const user = userInLocalStorage ? JSON.parse(userInLocalStorage) : null
-  // const [user, setUser] = useState(
-  //   userInLocalStorage || ""
-  // );
+  const user = userInLocalStorage ? userInLocalStorage : null;
 
   const navigate = useNavigate();
   const apiAccessToken = import.meta.env.VITE_API_TOKEN;
   const fetchUserData = async () => {
-    // if (!user) {
-      
-    //   return <h1>User is not available</h1>
-    // };
     setLoading(true);
 
     try {
@@ -47,20 +40,13 @@ export const ProfileProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       fetchUserData();
+    } else {
+      navigate("/");
     }
   }, [user]);
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (user) {
-      localStorage.setItem("user", user);
-      fetchUserData();
-      navigate("/profile");
-    }
-  };
   return (
-    <ProfileContext.Provider
-      value={{ profile, loading, handleSubmit, user,setLoading }}>
+    <ProfileContext.Provider value={{ profile, loading, user, setLoading }}>
       {children}
     </ProfileContext.Provider>
   );

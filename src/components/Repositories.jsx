@@ -47,15 +47,13 @@ const Repositories = () => {
           <i className="bx bx-right-arrow-alt border-2 text-center p-2 text-3xl hover:bg-[#ddd]"></i>
         </div>
       </div>
-      {/* <hr className="border-4 w-48 lg:ml-32 border-[#EAD8B1] mx-auto" /> */}
+      {loading && <h1 className="text-3xl text-center font-bold">Loading....</h1>}
       <div className=" grid lg:grid-cols-4 grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4 mx-auto mt-8 lg:w-11/12">
-        {loading && <p>Loading....</p>}
         {displayFewRepositories !== null &&
           displayFewRepositories.map((repository) => (
             <div
               key={repository.id}
               className="p-4 bg-[#fff] text-black repository rounded w-82 flex flex-col justify-between">
-              {/* className="p-4 h-82 bg-[#fff] text-black repository rounded w-82 flex flex-col justify-between"> */}
               <h1
                 className=" text-2xl font-bold p-2 cursor-pointer"
                 onClick={() => handleRedirectToRepo(repository.name)}>
