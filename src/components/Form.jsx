@@ -1,12 +1,23 @@
-import { useFetch } from "../context/index";
+import { useState } from "react";
+// import { useFetch } from "../context/index";
 import { useTheme } from "../context/index";
 import "./FormStyles.css";
+import {  useNavigate } from "react-router-dom";
 const Form = () => {
-  const { handleSubmit, user, setUser } = useFetch();
+  const [username, setUsername] = useState('')
   const { theme } = useTheme();
+  const navigate = useNavigate()
   const handleChange = (e) => {
-    setUser(e.target.value);
+    setUsername(e.target.value);
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    const user = username
+    console.log('user', user)
+    localStorage.setItem('user', JSON.stringify(user))
+    navigate(`/profile/${username}`)
+  }
   return (
     <>
       <div className="mt-24 home flex flex-col justify-center items-center ">
@@ -25,7 +36,7 @@ const Form = () => {
             type="text"
             placeholder="Please Enter your username"
             id="user"
-            value={user}
+            value={username}
             onChange={handleChange}
             required
             className={`p-6 m-2 rounded text-black ${
