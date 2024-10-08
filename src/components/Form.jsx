@@ -1,5 +1,5 @@
-import { useFetch } from "../context/ProfileContext";
-import { useTheme } from "../context/ThemeContext";
+import { useFetch } from "../context/index";
+import { useTheme } from "../context/index";
 import "./FormStyles.css";
 const Form = () => {
   const { handleSubmit, user, setUser } = useFetch();
@@ -28,7 +28,7 @@ const Form = () => {
             value={user}
             onChange={handleChange}
             required
-            className={`p-6 m-2 rounded ${
+            className={`p-6 m-2 rounded text-black ${
               theme === "dark"
                 ? "border-none outline-none"
                 : "border-2 border-black"

@@ -5,13 +5,16 @@ import "./index.css";
 import { ProfileProvider } from "./context/ProfileContext.jsx";
 import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "./context/ThemeContext.jsx";
+import { RepositoryProvider } from "./context/RepositoryContext.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <ProfileProvider>
         <ThemeProvider>
-          <App />
+          <RepositoryProvider>
+            <App />
+          </RepositoryProvider>
         </ThemeProvider>
       </ProfileProvider>
     </BrowserRouter>
