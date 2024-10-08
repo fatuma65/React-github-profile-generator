@@ -1,23 +1,20 @@
 import { useState } from "react";
-// import { useFetch } from "../context/index";
 import { useTheme } from "../context/index";
 import "./FormStyles.css";
-import {  useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const Form = () => {
-  const [username, setUsername] = useState('')
+  const [username, setUsername] = useState("");
   const { theme } = useTheme();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setUsername(e.target.value);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    const user = username
-    console.log('user', user)
-    localStorage.setItem('user', JSON.stringify(user))
-    navigate(`/profile/${username}`)
-  }
+    e.preventDefault();
+    localStorage.setItem("user", username);
+    navigate(`/profile/${username}`);
+  };
   return (
     <>
       <div className="mt-24 home flex flex-col justify-center items-center ">

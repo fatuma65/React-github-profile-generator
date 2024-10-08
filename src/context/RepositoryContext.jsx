@@ -14,7 +14,9 @@ export const RepositoryProvider = ({ children }) => {
   const fetchRepositories = async () => {
     setLoading(true);
     const response = await fetch(`https://api.github.com/users/${user}/repos`);
+    console.log(response)
     const data = await response.json();
+    console.log(data)
     setRepositories(data);
     setLoading(false);
   };

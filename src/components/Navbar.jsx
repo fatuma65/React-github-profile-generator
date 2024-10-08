@@ -6,7 +6,7 @@ const Navbar = () => {
   const [menuItems, setMenuItems] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const { theme, setTheme } = useTheme();
-  const {user} = useFetch()
+  const { user } = useFetch();
 
   const handleClick = () => {
     setMenuItems(!menuItems);
@@ -54,9 +54,11 @@ const Navbar = () => {
             <li>
               <Link to={"/search"}>Search</Link>
             </li>
-            <li>
-              <Link to={`/profile/${user}`}>Profile</Link>
-            </li>
+            {user !== null && (
+              <li>
+                <Link to={`/profile/${user}`}>Profile</Link>
+              </li>
+            )}
           </ul>
         </nav>
         <div className="flex gap-4 items-center lg:hidden icons ">
