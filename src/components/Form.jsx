@@ -15,6 +15,7 @@ const Form = () => {
     localStorage.setItem("user", username);
     navigate(`/profile/${username}`);
   };
+
   return (
     <>
       <div className="mt-24 home flex flex-col justify-center items-center ">
