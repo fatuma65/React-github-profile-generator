@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import "./NavbarStyles.css";
 import { useEffect, useState } from "react";
-import { useTheme } from "../context/index";
+import { useFetch, useTheme } from "../context/index";
 const Navbar = () => {
   const [menuItems, setMenuItems] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const { theme, setTheme } = useTheme();
+  const {user} = useFetch()
 
   const handleClick = () => {
     setMenuItems(!menuItems);
@@ -54,7 +55,7 @@ const Navbar = () => {
               <Link to={"/search"}>Search</Link>
             </li>
             <li>
-              <Link to={"/profile"}>Profile</Link>
+              <Link to={`/profile/${user}`}>Profile</Link>
             </li>
           </ul>
         </nav>

@@ -9,17 +9,18 @@ export const ProfileProvider = ({ children }) => {
   const userInLocalStorage = localStorage.getItem("user");
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(
-    userInLocalStorage || ""
-  );
+  const user = userInLocalStorage ? JSON.parse(userInLocalStorage) : null
+  // const [user, setUser] = useState(
+  //   userInLocalStorage || ""
+  // );
 
   const navigate = useNavigate();
   const apiAccessToken = import.meta.env.VITE_API_TOKEN;
   const fetchUserData = async () => {
-    if (!user) {
-      console.log("User not found")
-      return;
-    };
+    // if (!user) {
+      
+    //   return <h1>User is not available</h1>
+    // };
     setLoading(true);
 
     try {
@@ -33,7 +34,7 @@ export const ProfileProvider = ({ children }) => {
       });
 
       if (!response.ok) {
-        throw new Error("User not found in appi request");
+        throw new Error("User not found in api request");
       }
       const data = await response.json();
       setProfile(data);
@@ -59,7 +60,7 @@ export const ProfileProvider = ({ children }) => {
   };
   return (
     <ProfileContext.Provider
-      value={{ profile, loading, handleSubmit, user, setUser, setLoading }}>
+      value={{ profile, loading, handleSubmit, user,setLoading }}>
       {children}
     </ProfileContext.Provider>
   );
