@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./NavbarStyles.css";
 import { useEffect, useState } from "react";
-import { useTheme } from "../context/ThemeContext";
+import { useTheme } from "../context/index";
 const Navbar = () => {
   const [menuItems, setMenuItems] = useState(false);
   const [scrolling, setScrolling] = useState(false);

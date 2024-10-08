@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useFetch } from "../context/ProfileContext";
+import { useFetch } from "../context/index";
 import { Link } from "react-router-dom";
 
 const Footer = () => {

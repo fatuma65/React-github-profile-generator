@@ -3,8 +3,12 @@
 }
 .text {
     font-size: 18px;
-    letter-spacing: .1rem;
+    padding: 10px;
 }
 .repository {
     box-shadow: 0 0 10px 0 rgba(0,0, 0, 0.1);
 }
+select {
+    font-style: 18px;
+}
+
