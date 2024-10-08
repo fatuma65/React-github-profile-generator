@@ -8,6 +8,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const { user } = useFetch();
 
+
   const handleClick = () => {
     setMenuItems(!menuItems);
   };
@@ -59,6 +60,7 @@ const Navbar = () => {
                 <Link to={`/profile/${user}`}>Profile</Link>
               </li>
             )}
+
           </ul>
         </nav>
         <div className="flex gap-4 items-center lg:hidden icons ">

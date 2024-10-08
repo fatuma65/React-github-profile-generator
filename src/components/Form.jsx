@@ -6,6 +6,7 @@ const Form = () => {
   const [username, setUsername] = useState("");
   const { theme } = useTheme();
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setUsername(e.target.value);
   };
@@ -15,6 +16,7 @@ const Form = () => {
     localStorage.setItem("user", username);
     navigate(`/profile/${username}`);
   };
+
 
   return (
     <>
