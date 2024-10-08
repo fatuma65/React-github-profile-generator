@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { createContext} from "react";
+import { createContext } from "react";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -10,19 +10,31 @@ export const ProfileProvider = ({ children }) => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(
-    userInLocalStorage ? userInLocalStorage : ""
+    userInLocalStorage || ""
   );
 
   const navigate = useNavigate();
   const apiAccessToken = import.meta.env.VITE_API_TOKEN;
   const fetchUserData = async () => {
-    if (!user) console.log("User not found");
+    if (!user) {
+      console.log("User not found")
+      return;
+    };
     setLoading(true);
 
     try {
+      if (!user) {
+        console.log("User not found");
+        return;
+      }
+      setLoading(true);
       const response = await fetch(`https://api.github.com/users/${user}`, {
-        headers: {'Authorization': `token ${apiAccessToken}`}
+        headers: { Authorization: `token ${apiAccessToken}` },
       });
+
+      if (!response.ok) {
+        throw new Error("User not found in appi request");
+      }
       const data = await response.json();
       setProfile(data);
     } catch (error) {
@@ -34,13 +46,13 @@ export const ProfileProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       fetchUserData();
-      JSON.stringify(localStorage.setItem("user", user));
     }
   }, [user]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user) {
+      localStorage.setItem("user", user);
       fetchUserData();
       navigate("/profile");
     }
@@ -52,4 +64,3 @@ export const ProfileProvider = ({ children }) => {
     </ProfileContext.Provider>
   );
 };
-
