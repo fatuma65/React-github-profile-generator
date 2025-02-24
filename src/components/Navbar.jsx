@@ -8,6 +8,7 @@ const Navbar = () => {
   const { theme, setTheme } = useTheme();
   const { user } = useFetch();
 
+
   const handleClick = () => {
     setMenuItems(!menuItems);
   };

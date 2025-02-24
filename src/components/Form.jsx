@@ -6,6 +6,7 @@ const Form = () => {
   const { errors, setErrors, loading } = useFetch();
   const { theme } = useTheme();
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setUsername(e.target.value);
   };
@@ -20,6 +21,7 @@ const Form = () => {
       navigate(`/profile/${username}`);
     }
   };
+
 
   return (
     <>
