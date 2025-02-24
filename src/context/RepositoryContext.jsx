@@ -12,18 +12,23 @@ export const RepositoryProvider = ({ children }) => {
   const perRepo = 8;
 
   const fetchRepositories = async () => {
-    setLoading(true);
-    const response = await fetch(`https://api.github.com/users/${user}/repos`);
-    console.log(response)
-    const data = await response.json();
-    console.log(data)
-    setRepositories(data);
-    setLoading(false);
+    try {
+      setLoading(true);
+      const response = await fetch(
+        `https://api.github.com/users/${user}/repos`
+      );
+      const data = await response.json();
+      setRepositories(data);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   useEffect(() => {
     fetchRepositories();
-  }, []);
+  }, [user]);
 
   const sortedRepositories = [...repositories];
   let n = sortedRepositories.length;
@@ -82,4 +87,3 @@ export const RepositoryProvider = ({ children }) => {
     </RepositoryContext.Provider>
   );
 };
-
