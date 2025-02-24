@@ -10,17 +10,18 @@ export const ProfileProvider = ({ children }) => {
   const [profile, setProfile] = useState(null);
   const [loading, setLoading] = useState(false);
   const user = userInLocalStorage ? userInLocalStorage : null;
+  const [errors, setErrors] = useState("");
 
   const navigate = useNavigate();
   const apiAccessToken = import.meta.env.VITE_API_TOKEN;
   const fetchUserData = async () => {
     setLoading(true);
-
+    if (!user) {
+      console.log("User not found");
+      setErrors("User not found");
+      return;
+    }
     try {
-      if (!user) {
-        console.log("User not found");
-        return;
-      }
       setLoading(true);
       const response = await fetch(`https://api.github.com/users/${user}`, {
         headers: { Authorization: `token ${apiAccessToken}` },
@@ -46,7 +47,8 @@ export const ProfileProvider = ({ children }) => {
   }, [user]);
 
   return (
-    <ProfileContext.Provider value={{ profile, loading, user, setLoading }}>
+    <ProfileContext.Provider
+      value={{ profile, errors, setErrors, loading, user, setLoading }}>
       {children}
     </ProfileContext.Provider>
   );
