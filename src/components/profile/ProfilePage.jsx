@@ -1,9 +1,20 @@
 import { useNavigate } from "react-router-dom";
-import { useFetch } from "../context/index";
+import { useFetch } from "../../context/index";
 import "./ProfileStyles.css";
+import { useEffect } from "react";
+import Spinner from "../spinner/Spinner";
 const UserProfile = () => {
-  const { profile, loading, user } = useFetch();
-  const navigate = useNavigate()
+  const { profile, loading, user, setProfile } = useFetch();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const storedProfile = localStorage.getItem("profile");
+    if (storedProfile) {
+      setProfile(JSON.parse(storedProfile));
+    }
+  }, []);
+
   const redirectUser = () => {
     window.open(`https://github.com/${user}`, "_blank");
   };
@@ -13,15 +24,13 @@ const UserProfile = () => {
   };
 
   const redirectToRepositories = () => {
-    navigate('/user-repositories')
-  }
-  
+    navigate("/user-repositories");
+  };
+
   return (
     <>
+      {loading && <Spinner />}
       <div className="flex flex-col items-center profile justify-center mt-24 ">
-        {loading && (
-          <h1 className="text-white text-2xl text-center">Loading....</h1>
-        )}
         <img
           src={profile?.avatar_url}
           alt=""
@@ -44,11 +53,16 @@ const UserProfile = () => {
           </div>
           <div className="flex p-2 items-center">
             <i className="bx bxs-calendar m-2 text-2xl"></i>
-            <h4 className="text-xl"> Joined {changeDateFormat(profile?.created_at)}</h4>
+            <h4 className="text-xl">
+              {" "}
+              Joined {changeDateFormat(profile?.created_at)}
+            </h4>
           </div>
         </div>
-        <div className="flex gap-4 " >
-          <div className=" bg-[#3A6D8C] cursor-pointer hover:bg-[#222] text text-white rounded" onClick={redirectToRepositories}>
+        <div className="flex gap-4 ">
+          <div
+            className=" bg-[#3A6D8C] cursor-pointer hover:bg-[#222] text text-white rounded"
+            onClick={redirectToRepositories}>
             <h2 className="text-center ">{profile?.public_repos}</h2>
             <h3 className="">REPOSITORIES</h3>
           </div>

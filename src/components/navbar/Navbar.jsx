@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
 import "./NavbarStyles.css";
 import { useEffect, useState } from "react";
-import { useFetch, useTheme } from "../context/index";
+import { useFetch, useTheme } from "../../context/index";
 const Navbar = () => {
   const [menuItems, setMenuItems] = useState(false);
   const [scrolling, setScrolling] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { user } = useFetch();
-
+  const { user, handleLogout } = useFetch();
 
   const handleClick = () => {
     setMenuItems(!menuItems);
@@ -36,7 +35,7 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`w-full flex justify-between md:justify-around items-center h-[70px] md:px-0 px-4 border-b header ${
+        className={`w-full flex justify-between lg:justify-around items-center h-[70px] md:px-0 px-8 border-b header ${
           scrolling ? "scroll" : ""
         }`}>
         <h1 className="text-4xl font-bold">
@@ -45,18 +44,23 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <nav>
             <ul
-              className={`flex gap-4 lg:flex cursor-pointer text-base  ${
+              className={`flex gap-4 lg:flex cursor-pointer text-base ${
                 menuItems ? "block cursor-pointer" : "hidden"
               } `}>
-              <li>
+              <li className="active">
                 <Link to={"/"}>Home</Link>
               </li>
-              <li>
+              <li className="active ">
                 <Link to={"/search"}>Search</Link>
               </li>
               {user !== null && (
-                <li>
+                <li className="active ">
                   <Link to={`/profile/${user}`}>Profile</Link>
+                </li>
+              )}
+              {user !== null && (
+                <li className="active " onClick={handleLogout}>
+                  Logout
                 </li>
               )}
             </ul>

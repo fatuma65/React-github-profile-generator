@@ -1,31 +1,32 @@
-import { useState } from "react";
+import { useCallback } from "react";
 import { useFetch, useTheme } from "../context/index";
-import { useNavigate } from "react-router-dom";
 const Form = () => {
-  const [username, setUsername] = useState("");
-  const { errors, setErrors, loading } = useFetch();
+  const { errors, setErrors, loading, fetchUserData, username, setUsername } =
+    useFetch();
   const { theme } = useTheme();
-  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setUsername(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (!username.trim()) {
-      setErrors("Please enter your username");
-    } else {
-      setErrors("");
-      localStorage.setItem("user", username);
-      navigate(`/profile/${username}`);
-    }
-  };
+  const handleSubmit = useCallback(
+    (e) => {
+      e.preventDefault();
 
+      if (!username.trim()) {
+        setErrors("Please enter your github username");
+      } else {
+        setErrors("");
+        fetchUserData();
+        localStorage.setItem("user", username);
+      }
+    },
+    [username]
+  );
 
   return (
     <>
-      <div className="mt-24 home flex flex-col justify-center items-center ">
+      <div className="mt-24  home flex flex-col justify-center items-center ">
         <i
           className={`bx bxl-github text-9xl m-2  ${
             theme === "dark" ? "text-[#78B7D0]" : "text-[#38BDF8]"
@@ -36,10 +37,10 @@ const Form = () => {
           }  p-2`}>
           Find Your Github Profile
         </h1>
-        <form action="" className="flex flex-col w-96">
+        <form action="" className="flex flex-col w-96 md:px-0 px-4 ">
           <input
             type="text"
-            placeholder="Please Enter your username"
+            placeholder=" Enter your username"
             id="user"
             value={username}
             onChange={handleChange}
@@ -48,7 +49,7 @@ const Form = () => {
             className={`p-6 m-2 rounded text-black ${
               theme === "dark"
                 ? "border-none outline-none"
-                : "border-2 border-black"
+                : "border border-black"
             }  `}
           />
 
@@ -56,13 +57,15 @@ const Form = () => {
 
           <button
             onClick={handleSubmit}
-            className={` text-xl bg-[#3A6D8C] p-3 m-2 text-white rounded focus:ring-2  focus:ring-[#24A0B5] focus:ring-offset-2 focus:ring-offset-[#052228] hover:bg-[#041E23] transition-colors`}>
-            {loading && (
-              <svg
-                className="mr-3 size-5 animate-spin ..."
-                viewBox="0 0 24 24"></svg>
-            )}
-            Submit
+            className={` text-xl flex justify-center px-2 items-center bg-[#041E23] p-3 m-2 text-white rounded focus:ring-2  focus:ring-[#24A0B5] focus:ring-offset-2 focus:ring-offset-[#052228] hover:bg-slate-800  transition-colors`}>
+            {loading
+              ? ((
+                  <svg
+                    className="mr-3 size-5 animate-spin ..."
+                    viewBox="0 0 24 24"></svg>
+                ),
+                "Processing")
+              : "Submit"}
           </button>
         </form>
       </div>

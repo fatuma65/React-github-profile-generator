@@ -1,6 +1,6 @@
 import Footer from "../components/Footer";
 import Form from "../components/Form";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/navbar/Navbar";
 
 const Search = () => {
   return (

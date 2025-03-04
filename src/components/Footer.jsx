@@ -42,7 +42,7 @@ const Footer = () => {
           </div>
           <div className="">
             <h1 className="text-base font-semibold lg:py-0 py-3">Company</h1>
-            <ul className="cursor-pointer ">
+            <ul className="cursor-pointer py-2">
               <li>
                 <Link to={"/search"}>Search User</Link>
               </li>
@@ -64,13 +64,14 @@ const Footer = () => {
               className="p-2  w-72 rounded text-[#000] outline-0"
               onChange={handleClick}
             />
-            {errors && <p className="text-red-600">{errors}</p>}
+
             <button
               role="button"
               className="border-2 p-2 mt-2 md:ml-2 rounded hover:bg-[#222] w-32 focus:ring-2"
               onClick={handleSubmitEmail}>
               Submit
             </button>
+            {errors && <p className="text-red-600">{errors}</p>}
             <div className="text-4xl p-2 cursor-pointer">
               <i
                 className="bx bxl-linkedin-square mt-4"

@@ -26,7 +26,7 @@ const HomePage = () => {
         <img
           src={image}
           alt="photo from roman-synkevych-wX2L8L-fGeA from unsplash"
-          className="md:w-1/2 w-full rounded md:px-0 px-4 md:py-0 py-2 rounded-md"
+          className="md:w-1/2 w-full md:px-0 px-4 md:py-0 py-2 rounded-md"
         />
       </div>
     </>
