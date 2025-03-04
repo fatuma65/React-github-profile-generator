@@ -27,10 +27,13 @@ body.dark {
   color: #fff;
 }
 body.light {
-  background-color: #F6F8FA;
+  background-color: #FAF9FF;
   color: #000;
 }
-@media screen and (min-width: 200px) and (max-width: 1024px) {
+ul li:active {
+  color: rgb(243, 112, 112);
+}
+@media screen and (min-width: 200px) and (max-width: 762px) {
   nav ul {
     display: none;
     flex-direction: column;

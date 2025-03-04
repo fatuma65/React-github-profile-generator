@@ -1,8 +1,8 @@
-import { useContext } from "react";
-import { ProfileContext } from "./ProfileContext";
+import { useContext, createContext } from "react";
+
 import { RepositoryContext } from "./RepositoryContext";
 import { ThemeContext } from "./ThemeContext";
-
+export const ProfileContext = createContext();
 export const useFetch = () => {
   return useContext(ProfileContext);
 };
