@@ -30,7 +30,7 @@ const UserProfile = () => {
   return (
     <>
       {loading && <Spinner />}
-      <div className="flex flex-col items-center profile justify-center mt-24 ">
+      <div className="flex flex-col items-center profile justify-center mt-48 ">
         <img
           src={profile?.avatar_url}
           alt=""

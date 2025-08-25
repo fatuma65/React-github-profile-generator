@@ -35,12 +35,12 @@ const Navbar = () => {
   return (
     <>
       <div
-        className={`w-full flex justify-between lg:justify-around items-center h-[70px] md:px-0 px-8 border-b header ${
+        className={`w-full flex justify-between lg:justify-around items-center h-[90px] md:px-0 px-8 border-b header ${
           scrolling ? "scroll" : ""
         }`}>
         <h1 className="text-4xl font-bold">
           Git<span className="text-[#38BDF8]">Hub</span>
-        </h1>
+        </h1> 
         <div className="flex items-center gap-4">
           <nav>
             <ul
