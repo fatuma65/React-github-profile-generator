@@ -30,7 +30,7 @@ const Footer = () => {
   };
   return (
     <>
-      <div className="bg-[#000] mt-16 w-full ">
+      <div className="bg-[#000] w-full bottom-0 fixed">
         <div className="text-white lg:flex justify-around gap-4 p-6 ">
           <div className="lg:w-72 ">
             <h1 className="text-4xl font-bold">
@@ -90,7 +90,7 @@ const Footer = () => {
         </div>
       </div>
     </>
-  );
+  );  
 };
 
 export default Footer;

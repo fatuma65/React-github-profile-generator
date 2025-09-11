@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const HomePage = () => {
   return (
     <>
-      <div className="md:flex justify-center items-center mt-28 md:px-24 px-0 max-w-full">
+      <div className="md:flex justify-center items-center mt-36 md:px-36 px-0 max-w-full">
         <div className=" md:w-1/2 w-full md:px-0 px-4">
           <h1 className="text-4xl font-bold py-2">
             Github Profile Data Finder

@@ -12,9 +12,9 @@ export const ProfileProvider = ({ children }) => {
 
   const navigate = useNavigate();
   const apiAccessToken = import.meta.env.VITE_API_TOKEN;
+  console.log(apiAccessToken)
 
   const fetchUserData = async () => {
-    setLoading(true);
     try {
       setErrors("");
 
@@ -27,10 +27,13 @@ export const ProfileProvider = ({ children }) => {
         setErrors("User not found");
         throw new Error("User not found in api request");
       }
+
       const data = await response.json();
       setProfile(data);
       localStorage.setItem("profile", JSON.stringify(data));
       navigate(`/profile/${username}`);
+      setUsername("");
+      
     } catch (error) {
       console.log(error);
     } finally {

@@ -26,7 +26,7 @@ const Form = () => {
 
   return (
     <>
-      <div className="mt-24  home flex flex-col justify-center items-center ">
+      <div className="mt-48 home flex flex-col justify-center items-center ">
         <i
           className={`bx bxl-github text-9xl m-2  ${
             theme === "dark" ? "text-[#78B7D0]" : "text-[#38BDF8]"
