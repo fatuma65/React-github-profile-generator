@@ -11,3 +11,6 @@
 select {
     font-style: 18px;
 }
+.not-allowed {
+    cursor: not-allowed;
+}

@@ -66,17 +66,16 @@ const UserProfile = () => {
             <h2 className="text-center ">{profile?.public_repos}</h2>
             <h3 className="">REPOSITORIES</h3>
           </div>
-          <div className=" bg-[#3A6D8C] cursor-pointer hover:bg-[#222] text text-white rounded">
+          <div className=" bg-[#3A6D8C] text text-white rounded not-allowed" title="This feature is not available">
             <h2 className="text-center">{profile?.followers}</h2>
             <h3 className="">FOLLOWERS</h3>
           </div>
-          <div className=" bg-[#3A6D8C] cursor-pointer hover:bg-[#222] text text-white rounded">
+          <div className=" bg-[#3A6D8C] text text-white rounded not-allowed" title="This feature is not available">
             <h2 className="text-center text-xl">{profile?.following}</h2>
             <h3 className="">FOLLOWING</h3>
           </div>
         </div>
       </div>
-      {/* <Repositories /> */}
     </>
   );
 };
